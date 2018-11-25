@@ -30,6 +30,7 @@ The first thing you need to note is that the troughput went up from 400 RU/s to 
 So, you need to scale that down, unless you are serious about it, and preparing for some heavy-duty data storage. On the dialog you can go as low as 1000 RU/s, which is still 48,6 EUR / month. After you created the collection, you can then scale it down to 400 RU/s. The you get the cost down to around 19,4 EUR / month.
 
 > This limitation applies only to the *Azure Storage Explorer* (at the time of writing, Nov. 2018). On the *Azure Portal* you can create a new collection with `Unlimited` storage capacity and `400 RU/s` throughput, as you can see from the image below.
+> 
 > ![Create new collection](images/create-collection-04.png)
 
 The second thing you have to address at this point, is the *Partition key*. The partition key is the path to the property in all JSON documents stored in the collection that will contain the value that determines the partition the document will be stored in. Documents with the same value are stored in the same partition. Documents with different values *may* be stored in the same partition too, but that is something which is totally controlled by Cosmos DB and out of your control.
