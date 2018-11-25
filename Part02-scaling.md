@@ -2,7 +2,7 @@
 
 [<- back](Part02-readme.md)
 
-The first thing you have to know before creating a Cosmos DB collection is how it is designed for scaling. The two main instruments for scaling are *partitioning* and *request units*, which are described below.
+The first thing you have to know before creating a Cosmos DB collection is how it is designed for scaling. The two main instruments for scaling are *partitioning* and *request units / second*, which are described below.
 
 ## Partitioning
 Every collection is partitioned. When you create a collection you must select whether you create a single-partition collection or a collection with multiple partitions. The maximum amount of data you can store in one partition is 10 GB. You cannot increase that, nor can you change a collection from single-partition to multi-partition, so if you created a single-partion collection, you're stuck with 10 GB data storage.
