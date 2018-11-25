@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FEEC001A-CDDF-4778-8B49-93872731B1A7}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		Part01-readme.md = Part01-readme.md
+		Part02-readme.md = Part02-readme.md
+		Part02-scaling.md = Part02-scaling.md
+		Part03-readme.md = Part03-readme.md
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{F1CEC19B-7A72-4335-BE10-0831805B1E92}"
+	ProjectSection(SolutionItems) = preProject
+		images\create-collection-01.png = images\create-collection-01.png
+		images\create-collection-02.png = images\create-collection-02.png
+		images\create-collection-03.png = images\create-collection-03.png
+		images\create-collection-04.png = images\create-collection-04.png
+		images\open-data-explorer-01.png = images\open-data-explorer-01.png
+		images\scale-settings-01.png = images\scale-settings-01.png
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F1CEC19B-7A72-4335-BE10-0831805B1E92} = {FEEC001A-CDDF-4778-8B49-93872731B1A7}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {172EF7F8-69D7-4DC5-99E2-B28BA92F6003}
+	EndGlobalSection
+EndGlobal
