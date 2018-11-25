@@ -1,5 +1,7 @@
 # Part 2: Creating a Cosmos DB Database
 
+[<- Part 1](Part01-readme.md) | [Part 3 ->](Part03-readme.md)
+
 If comparing Cosmos DB to SQL Server and the containers you have there, Cosmos DB also has its similar containers. These can roughly be mapped as follows:
 
 | SQL Server | Cosmos DB     |

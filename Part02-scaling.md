@@ -1,6 +1,6 @@
 # Part 2: Scaling Considerations
 
-[<- back](Part02-readme.md)
+[<- Part 2](Part02-readme.md)
 
 The first thing you have to know before creating a Cosmos DB collection is how it is designed for scaling. The two main instruments for scaling are *partitioning* and *request units / second*, which are described below.
 
