@@ -1,8 +1,7 @@
-# Using Cosmos DB
-Sample code and documentation about how to properly use Cosmos DB in your application - Information that I would have loved to have before designing my first solutions using CosmosDB.
+# Preparing for Cosmos DB
+This repository is a tutorial for getting started with designing applications that use [Azure Cosmos DB](https://docs.microsoft.com/en-us/azure/cosmos-db/introduction) as data storage. The tutorial mainly focuses on things that you need to take care of during your architecture design and that might be hard or even impossible to change later on.
 
-## Introduction
-This tutorial focuses mainly on the things you need to know before building your application with Cosmos DB, the things that can be quite hard if not impossible to change once you've deployed your solution.
+> Personally, I would have loved to have this kind of a short tutorial before starting my first Cosmos DB project to get me going in the right direction from the beginning.
 
 If you are not familiar with Cosmos DB, you should first read this [overview](https://docs.microsoft.com/en-us/azure/cosmos-db/introduction).
 
