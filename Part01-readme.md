@@ -1,6 +1,6 @@
 # Part 1: Setting up Your Environment
 
-[Part 2 ->](Part02-readme.md)
+[<- Home](README.md) | [Part 2 ->](Part02-readme.md)
 
 Before starting to dig in to working with Cosmos DB, I'd like to add a few words about your development environment. The tools described below are tools that I've found most useful when working with Cosmos DB solutions.
 
