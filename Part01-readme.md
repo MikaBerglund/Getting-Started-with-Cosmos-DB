@@ -1,4 +1,4 @@
-# Part 1: Setting up Your Environment
+# Part 1: The Development Environment
 
 [<- Home](README.md) | [Part 2 ->](Part02-readme.md)
 

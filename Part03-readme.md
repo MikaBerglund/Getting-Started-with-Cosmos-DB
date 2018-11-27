@@ -45,3 +45,5 @@ public override string Partition
 }
 
 ```
+
+The setter for the `Partition` property is deliberately empty, because I don't want that to be set directly. Normally, the property would be read-only, but in order for it to be serialized to JSON, the property needs to be read-write.
