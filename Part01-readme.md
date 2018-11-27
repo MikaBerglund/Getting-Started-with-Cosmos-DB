@@ -15,3 +15,5 @@ Although the Cosmos emulator comes with a browser based data explorer that you c
 
 ## Cosmos DB Migration Tool
 At some point during your development work, you may need to move content between collections. The [Cosmos DB Migration Tool](https://docs.microsoft.com/en-us/azure/cosmos-db/import-data) is a handy tool for moving data. You can move data between the service running in Azure, local emulator or JSON files on your local disk. Dumping content to a local disk is also handy for backing up. Unfortunately you can't schedule the tool to do that regularly.
+
+Scroll down to the [Installation](https://docs.microsoft.com/en-us/azure/cosmos-db/import-data#Install) section to find a link to the source code or to download the latest precompiled version.
