@@ -15,7 +15,6 @@ namespace DataModel
         public override string Partition
         {
             get => $"location:{this.Country}/{this.City}";
-            set { /** Deliberately empty */ }
         }
     }
 }

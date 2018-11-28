@@ -19,18 +19,45 @@ For the data model, I've created a .NET Standard class library, the [`DataModel`
 The base class [`DocumentBase`](DataModel/DocumentBase.cs) takes care of the requirements described above that each document must meet. The class looks like this.
 
 ``` C#
+/// <summary>
+/// The base class for classes that are stored JSON documents
+/// in a Cosmos DB collection.
+/// </summary>
 public abstract class DocumentBase
 {
+    protected DocumentBase()
+    {
+        this.DocumentType = this.GetType().Name;
+    }
+
+    /// <summary>
+    /// The unique ID of the document.
+    /// </summary>
     [JsonProperty("id")]
     public string Id { get; set; }
 
-    public virtual string Partition { get; set; }
+    /// <summary>
+    /// Use in Cosmos DB as partition key to distribute documents
+    /// across multiple partitions.
+    /// </summary>
+    public virtual string Partition { get; protected set; }
+
+    /// <summary>
+    /// The class name of the document. Enables you to look for
+    /// particular types of documents.
+    /// Defaults to the name of the class, but you can override
+    /// the property to set the type to something else.
+    /// </summary>
+    public virtual string DocumentType { get; protected set; }
+
 }
 ```
 
 The `Id` property is decorated with the [`JsonProperty`](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_JsonPropertyAttribute.htm) attribute and specifies that the value should be serialized with a lowercase name, to meet the requirement I described above. I could have named the property `id` and forget about the `JsonProperty` attribute, but following the convention for .NET class libraries, public members in classes begin with a capital letter.
 
-The `Partition` property is used in derived classes to provide a value that defines the partition the document will be stored in. By having a generic `Partition` property, and marking it as `virtual`, we allow derived classes to fully control the value the property returns, and use the class's other properties in the value.
+The `Partition` property is used in derived classes to provide a value that defines the partition the document will be stored in. By having a generic `Partition` property, and marking it as `virtual`, we allow derived classes to fully control the value the property returns, and use the class's other properties in the value. This is more or less the same thing as a [synthetic partition key](https://docs.microsoft.com/en-us/azure/cosmos-db/synthetic-partition-keys).
+
+The `DocumentType` property will by default hold the name of the class. This allows you to query your collection for documents that contain the same kind of information, regardless of how they are partitioned. This allows you store all of your documents in the same collection, which in turn makes it easier to manager the application storage, since you only have one container, the *collection*.
 
 ### The Company Class
 One example of how you could override the `Partition` property is the [`Company`](DataModel/Company.cs) class. It uses the `Country` and `City` properties to create the `Partition` property. You may need to adjust this logic to better suit the geographical distribution of the companies in your system.
@@ -41,9 +68,8 @@ The `Partition` implementation looks like this.
 public override string Partition
 {
     get => $"location:{this.Country}/{this.City}";
-    set { /** Deliberately empty */ }
 }
 
 ```
 
-The setter for the `Partition` property is deliberately empty, because I don't want that to be set directly. Normally, the property would be read-only, but in order for it to be serialized to JSON, the property needs to be read-write.
+The `Partition` property is a read-only property, because it's value is created from other properties in the class.
