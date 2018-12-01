@@ -14,3 +14,4 @@ The next part always contains everything from the previous part, and all parts a
 - [Part 2](Part02-readme.md): Creating a Cosmos DB database.
    - [Scaling Considerations](Part02-scaling.md) 
 - [Part 3](Part03-readme.md): Designing a data model.
+- [Part 4](Part04-readme.md): Querying data using the data model.

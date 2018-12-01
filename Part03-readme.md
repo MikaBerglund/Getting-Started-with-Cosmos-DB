@@ -1,6 +1,6 @@
 # Part 3: Designing a Data Model
 
-[<- Part 2](Part02-readme.md)
+[<- Part 2](Part02-readme.md) | [Part 4 ->](Part04-readme.md)
 
 Designing the data model for your application is perhaps the most time-consuming task you have to take care of before actually staring to build your application. You don't have to completely design your data model, but there are certain things you must consider beforehand. This part focuses on those.
 
@@ -27,6 +27,7 @@ public abstract class DocumentBase
 {
     protected DocumentBase()
     {
+        this.Id = Guid.NewGuid().ToString();
         this.DocumentType = this.GetType().Name;
     }
 
@@ -73,3 +74,53 @@ public override string Partition
 ```
 
 The `Partition` property is a read-only property, because it's value is created from other properties in the class.
+
+### The Project Class
+The [`Project`](DataModel/Project.cs) class demonstrates how you can create associations between different types of documents (entities). Each project refers to a company that the project is associated with through the `CompanyId` property. Please note that Cosmos DB has no mechanisms for enforcing referential integrity, so you have to take care of that in your
+data access layer.
+
+#### The `CompanyId` Property
+The first thing to note in the `Project` class is the property that references the company that the project is associated with.
+
+``` C#
+// Comments are removed for brevity.
+private string _CompanyId;
+public string CompanyId
+{
+    get => _CompanyId;
+    set
+    {
+        _CompanyId = value;
+        this.Partition = value;
+    }
+}
+```
+
+When the `CompanyId` property is set, we also set the `Partition` to the same value. This way, all projects of one particular company will be stored in their own partition. So, the more companies we have, the more partitions we get. This strategy could be used for other entities that are associated with a single company. Then every company would have their own "store" that would contain their information.
+
+Now, whether this is a good strategy for your solution, I cannot say. It depends on many factors that you have to take into consideration.
+
+#### The `Company` Property
+The second property I'd like to dig into is the `Company` property.
+
+``` C#
+    private Company _Company;
+    [JsonIgnore]
+    public Company Company
+    {
+        get => _Company;
+        set
+        {
+            _Company = value;
+            this.CompanyId = this.Company?.Id;
+        }
+    }
+```
+
+The [`JsonIgnore`](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_JsonIgnoreAttribute.htm) attribute is used leave that property out of JSON serialization. We don't want to store the entire `Company` object inside of the `Project` document when storing it in the database, since we already have the `Company` entity stored as a separate document. The reference using the `CompanyId` property is enough. You can then include the `Company` entity in your data access layer when querying for projects.
+
+### Serialization
+When you write your entity classes like this, you will have a lot of control in your code over how your entities are serialized and stored in your Cosmos DB database. You don't have to anything for the serialization to happen. However, if you want to serialize your objects to JSON strings, you can easily do it with the [`JsonConvert.SerializeObject`](https://www.newtonsoft.com/json/help/html/Overload_Newtonsoft_Json_JsonConvert_SerializeObject.htm) method, which is part of the very popular [Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json) library. Check out [this sample](https://www.newtonsoft.com/json/help/html/SerializeObject.htm) for details.
+
+## Conclusion
+While there is nothing that stops you from working with low-level types like the [Document](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.documents.document) class to read and write all of your data in a Cosmos DB database, I strongly recommend that you create data model classes to provide your application with a more meaningful data structure. It might take a while to plan and create it, but I promise you that it will save a huge amount of time when developing your application.

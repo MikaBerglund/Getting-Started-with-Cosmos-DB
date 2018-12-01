@@ -10,6 +10,7 @@ namespace DataModel
     {
         protected DocumentBase()
         {
+            this.Id = Guid.NewGuid().ToString();
             this.DocumentType = this.GetType().Name;
         }
 
