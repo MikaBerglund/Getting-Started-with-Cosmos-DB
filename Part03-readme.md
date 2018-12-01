@@ -19,36 +19,22 @@ For the data model, I've created a .NET Standard class library, the [`DataModel`
 The base class [`DocumentBase`](DataModel/DocumentBase.cs) takes care of the requirements described above that each document must meet. The class looks like this.
 
 ``` C#
-/// <summary>
-/// The base class for classes that are stored JSON documents
-/// in a Cosmos DB collection.
-/// </summary>
+// Comments removed for brevity. See the source file for
+// detailed comments.
 public abstract class DocumentBase
 {
     protected DocumentBase()
     {
         this.Id = Guid.NewGuid().ToString();
         this.DocumentType = this.GetType().Name;
+        this.Partition = this.DocumentType;
     }
 
-    /// <summary>
-    /// The unique ID of the document.
-    /// </summary>
     [JsonProperty("id")]
     public string Id { get; set; }
 
-    /// <summary>
-    /// Use in Cosmos DB as partition key to distribute documents
-    /// across multiple partitions.
-    /// </summary>
     public virtual string Partition { get; protected set; }
 
-    /// <summary>
-    /// The class name of the document. Enables you to look for
-    /// particular types of documents.
-    /// Defaults to the name of the class, but you can override
-    /// the property to set the type to something else.
-    /// </summary>
     public virtual string DocumentType { get; protected set; }
 
 }
@@ -91,7 +77,7 @@ public string CompanyId
     set
     {
         _CompanyId = value;
-        this.Partition = value;
+        this.Partition = $"company:{value}";
     }
 }
 ```
@@ -112,12 +98,18 @@ The second property I'd like to dig into is the `Company` property.
         set
         {
             _Company = value;
-            this.CompanyId = this.Company?.Id;
+            this.CompanyId = null != this.Company
+                ? $"{this.Company.Partition}|{this.Company.Id}"
+                : null;
         }
     }
 ```
 
 The [`JsonIgnore`](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_JsonIgnoreAttribute.htm) attribute is used leave that property out of JSON serialization. We don't want to store the entire `Company` object inside of the `Project` document when storing it in the database, since we already have the `Company` entity stored as a separate document. The reference using the `CompanyId` property is enough. You can then include the `Company` entity in your data access layer when querying for projects.
+
+In order to ensure that we can find the referenced company, we must include the company's partition too, because an `id` in Cosmos DB needs to be unique only within one partition, and the partitioning strategy we have for the `Company` entity will store companies in multiple partitions.
+
+> Please note that you need to consider the partitioning strategy to fit your needs. This is just to showcase the importance of partitioning, and the consequences each partitioning strategy can have on the rest of your solution.
 
 ### Serialization
 When you write your entity classes like this, you will have a lot of control in your code over how your entities are serialized and stored in your Cosmos DB database. You don't have to anything for the serialization to happen. However, if you want to serialize your objects to JSON strings, you can easily do it with the [`JsonConvert.SerializeObject`](https://www.newtonsoft.com/json/help/html/Overload_Newtonsoft_Json_JsonConvert_SerializeObject.htm) method, which is part of the very popular [Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json) library. Check out [this sample](https://www.newtonsoft.com/json/help/html/SerializeObject.htm) for details.

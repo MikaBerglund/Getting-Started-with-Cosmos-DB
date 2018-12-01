@@ -18,10 +18,7 @@ namespace DataModel
             set
             {
                 _CompanyId = value;
-
-                // We use the company ID as partition key. To distribute company
-                // related data in their own partition.
-                this.Partition = value;
+                this.Partition = $"company:{value}";
             }
         }
 
@@ -36,7 +33,7 @@ namespace DataModel
             set
             {
                 _Company = value;
-                this.CompanyId = this.Company?.Id;
+                this.CompanyId = null != this.Company ? $"{this.Company.Partition}|{this.Company.Id}" : null;
             }
         }
 

@@ -10,8 +10,17 @@ namespace DataModel
     {
         protected DocumentBase()
         {
+            // Set the ID to a new guid. This way we have a unique ID
+            // in case it is not explicitly set.
             this.Id = Guid.NewGuid().ToString();
+
+            // Set the document type to match the name of the class.
             this.DocumentType = this.GetType().Name;
+
+            // Set the partition by default to match the document type
+            // to have some kind ofdistribution in case the partition
+            // is not set in a derived class.
+            this.Partition = this.DocumentType;
         }
 
         /// <summary>
