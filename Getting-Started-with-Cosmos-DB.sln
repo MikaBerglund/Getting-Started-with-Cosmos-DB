@@ -8,8 +8,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitignore = .gitignore
 		Part01-readme.md = Part01-readme.md
 		Part02-readme.md = Part02-readme.md
-		Part02-scaling.md = Part02-scaling.md
 		Part03-readme.md = Part03-readme.md
+		Part04-readme.md = Part04-readme.md
+		Part05-readme.md = Part05-readme.md
 		README.md = README.md
 	EndProjectSection
 EndProject
@@ -25,7 +26,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{F1CEC1
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataModel", "DataModel\DataModel.csproj", "{01DD6896-8197-42F1-A0DD-47B7FF995BF3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientConsole", "ClientConsole\ClientConsole.csproj", "{DD4A0311-A5F6-46CF-9E8A-5060B33E3E0C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClientConsole", "ClientConsole\ClientConsole.csproj", "{DD4A0311-A5F6-46CF-9E8A-5060B33E3E0C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
