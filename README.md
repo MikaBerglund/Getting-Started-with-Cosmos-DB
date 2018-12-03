@@ -1,4 +1,4 @@
-# Preparing for Cosmos DB
+# Getting Started with Azure Cosmos DB
 This repository is a tutorial for getting started with designing applications that use [Azure Cosmos DB](https://docs.microsoft.com/en-us/azure/cosmos-db/introduction) as data storage. The tutorial mainly focuses on things that you need to take care of during your architecture design and that might be hard or even impossible to change later on.
 
 > Personally, I would have loved to have this kind of a short tutorial before starting my first Cosmos DB project to get me going in the right direction from the beginning.
@@ -12,6 +12,6 @@ The next part always contains everything from the previous part, and all parts a
 
 - [Part 1](Part01-readme.md): Setting up your environment.
 - [Part 2](Part02-readme.md): Scaling considerations.
-- [Part 3](Part03-readme.md): Creating a Cosmos DB database.
-- [Part 4](Part04-readme.md): Designing a data model.
+- [Part 3](Part03-readme.md): Designing a data model.
+- [Part 4](Part04-readme.md): Creating a Cosmos DB database.
 - [Part 5](Part05-readme.md): Querying data using the data model.
