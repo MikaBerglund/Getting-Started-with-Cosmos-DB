@@ -6,7 +6,7 @@ This repository is a tutorial for getting started with designing applications th
 If you are not familiar with Cosmos DB, you should first read this [overview](https://docs.microsoft.com/en-us/azure/cosmos-db/introduction).
 
 ## Tutorial Structure
-There are several parts to this tutorial. Each part focuses on a particular subject.
+This tutorial is split up into the following parts. Each part focuses on a particular subject.
 
 - [Part 1](Part01-readme.md): The development environment.
 - [Part 2](Part02-readme.md): Scaling considerations.
