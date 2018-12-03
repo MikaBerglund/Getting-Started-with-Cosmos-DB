@@ -33,7 +33,9 @@ namespace DataModel
             set
             {
                 _Company = value;
-                this.CompanyId = null != this.Company ? $"{this.Company.Partition}|{this.Company.Id}" : null;
+                this.CompanyId = null != this.Company
+                    ? $"{this.Company.Partition}|{this.Company.Id}"
+                    : null;
             }
         }
 
