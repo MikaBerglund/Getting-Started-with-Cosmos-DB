@@ -6,11 +6,9 @@ This repository is a tutorial for getting started with designing applications th
 If you are not familiar with Cosmos DB, you should first read this [overview](https://docs.microsoft.com/en-us/azure/cosmos-db/introduction).
 
 ## Tutorial Structure
-There are several parts to this tutorial. Each part focuses on a particular subject. The contents of each part is stored in their own branch, so you can easily compare the differences from one part to another.
+There are several parts to this tutorial. Each part focuses on a particular subject.
 
-The next part always contains everything from the previous part, and all parts are merged to the `master` branch. Each part also has their own readme file, which you can find below.
-
-- [Part 1](Part01-readme.md): Setting up your environment.
+- [Part 1](Part01-readme.md): The development environment.
 - [Part 2](Part02-readme.md): Scaling considerations.
 - [Part 3](Part03-readme.md): Designing a data model.
 - [Part 4](Part04-readme.md): Creating a Cosmos DB database.
