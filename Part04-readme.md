@@ -25,6 +25,19 @@ This makes the throughput shared on a database level a very viable option for mo
 
 Sharing throughput across these environments allows you to start low and provision just 400 RU/s for all three environments. If you would provision the throughput for each environment separately, you would need to provision three times the same amount, which would also cost you three times more.
 
-## Creating Collections
-The data you store in Cosmos DB is always stored in collections that you create in databases. If you are creating a collection in a database with provisioned throughput, then all collections in that database are multi-partition collections, meaning you have to specify the partition key.
+400 RU/s is the minimum throughput you can provision on a database level in a database with a maximum 4 collections. **For each additional collection the minimum goes up by 100 RU/s**, which is reasonable, I guess. So, if you have a database with 12 collections, the minimum provisioned throughput for that database would be 1200 RU/s.
 
+## Creating Collections
+The data you store in Cosmos DB is always stored in collections that you create in databases. If you are creating a collection in a database with provisioned throughput, then **all collections in that database are multi-partition collections**, meaning you have to specify the partition key. The partition key is covered in more detail in [part 2](Part02-readme.md) and also somewhat in [part 3](Part03-readme.md).
+
+If you are creating a single-partition, then you don't have to, or actually, you can't, specify a partition key. Remember, **the maximum size for a single-partition collection is always 10 GB**. Storing more data requires multi-partition collections.
+
+## Conclusion
+Since the minimum throughput you can provision on a database level is [coming down to 400 RU/s](https://docs.microsoft.com/en-us/azure/cosmos-db/set-throughput#comparison-of-models), and let you share that throughput across all your collections in that database, I see no point in creating databases without shared provisioned throughput and provisioning throughput on a collection level. I would **always create my databases with provisioned throughput on the database level**, unless there was some special requirement to do otherwise.
+
+If you want to create a collection with dedicated provisioned throughput, you can always do that, also in a database with throughput provisioned on the database level.
+
+## What's Next
+In [part 5](Part05-readme.md) I'll go through some basics about reading and writing data in a Cosmos DB database using the data model that I covered in [part 3](Part03-readme.md).
+
+[Go to Part 5 ->](Part05-readme.md)
