@@ -10,7 +10,7 @@ A quote from the [Azure documentation](https://docs.microsoft.com/en-us/azure/az
 **Whatever your application requires** is a pretty bold statement. Let's look a little deeper into how this is achieved. The two main instruments for scaling are *partitioning* and *request units / second*, which are described below.
 
 ## Partitioning
-Every collection is partitioned. When you create a collection you must select whether you create a single-partition collection or a collection with multiple partitions. The maximum amount of data you can store in one partition is 10 GB. You cannot increase that, nor can you change a collection from single-partition to multi-partition, so if you created a single-partion collection, you're stuck with 10 GB data storage.
+Every collection is partitioned. When you create a collection you must select whether you create a single-partition collection or a collection with multiple partitions. Depending on how you create your database, your collections in that partion might be required to be multi-partition collections (see [part 4](Part04-readme.md) to find out more). The maximum amount of data you can store in one partition is 10 GB. You cannot increase that, nor can you change a collection from single-partition to multi-partition, so if you created a single-partion collection, you're stuck with 10 GB data storage.
 
 If you find that you would need to scale from a single-partition to multi-partition, you have to create a new collection and migrate your data to the new collection. Luckily, that's pretty easy with for instance the [Cosmos DB Migration Tool](https://docs.microsoft.com/en-us/azure/cosmos-db/import-data) that I talked about in [Part 1](Part01-readme.md).
 
