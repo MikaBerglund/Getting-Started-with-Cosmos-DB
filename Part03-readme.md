@@ -118,3 +118,6 @@ When you write your entity classes like this, you will have a lot of control in 
 While there is nothing that stops you from working with low-level types like the [Document](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.documents.document) class to read and write all of your data in a Cosmos DB database, I strongly recommend that you create data model classes to provide your application with a more meaningful data structure. It might take a while to plan and create it, but I promise you that it will save a huge amount of time when developing your application.
 
 ## What's Next
+In [part 4](Part04-readme.md) we'll have a closer look at creating a Cosmos DB database and a collection. If you want to learn more about creating data models for Cosmos DB, I suggest that you also have a look at the [Modeling document data for NoSQL databases](https://docs.microsoft.com/en-us/azure/cosmos-db/modeling-data) article.
+
+[Go to Part 4 ->](Part04-readme.md)
