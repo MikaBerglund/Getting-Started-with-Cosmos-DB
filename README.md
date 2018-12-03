@@ -12,4 +12,4 @@ This tutorial is split up into the following parts. Each part focuses on a parti
 - [Part 2](Part02-readme.md): Scaling considerations.
 - [Part 3](Part03-readme.md): Designing a data model.
 - [Part 4](Part04-readme.md): Creating a Cosmos DB database.
-- [Part 5](Part05-readme.md): Querying data using the data model.
+- [Part 5](Part05-readme.md): Reading and writing data using the data model.

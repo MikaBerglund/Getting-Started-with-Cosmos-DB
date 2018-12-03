@@ -1,4 +1,4 @@
-# Part 05: Querying Data Using the Data Model
+# Part 05: Reading and Writing Data Using the Data Model
 
 [<- Part 4](Part04-readme.md)
 
