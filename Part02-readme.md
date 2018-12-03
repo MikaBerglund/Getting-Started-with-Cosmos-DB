@@ -25,10 +25,10 @@ When scaling your collection, you define the number of request units / second it
 
 > It "costs" 1 RU to read a 1 kB document, and 5 RUs to write a 1 kB document.
 
-This means that with the minimum 400 RU/s that every collection has (apart from the setups where RUs are shared across multiple collections), you can read 400 1 kB documents ever second, or write 80 of those documents, or any combination of these. This is however just a theoretical maximum, because a small part of your RU/s goes to reading and writing indexes.
+This means that with the minimum 400 RU/s, you can read 400 1 kB documents ever second, or write 80 of those documents, or any combination of these. This is however just a theoretical maximum, because a small part of your RU/s goes to reading and writing indexes as well.
 
 ## Conclusion
-If you ask me, I would always go with multi-partitioned collections. It is true that you cannot create a new multi-partitioned collection with less than 1000 RU/s, but after you've created one, you can go and drop the throughput down to 400 RU/s, which is the same minimum that you have with singe-partion collections.
+If you ask me, I would always go with multi-partition collections. It is true that you have to plan your data model a bit more, because you need to consider partitioning, but that is not a bad thing at all, in my opinion anyway.
 
 Since the RU/s is the only thing that costs money (OK, storage also costs something, but that cost is quite marginal, and if you go over 10 GB, you need to run in multi-partition collections anyway), and you can have the same throughput for both single-partition and multi-partition collections, I don't see any point in running single-partition collections, except for maybe some quick mockups etc.
 
