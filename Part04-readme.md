@@ -38,6 +38,6 @@ Since the minimum throughput you can provision on a database level is [coming do
 If you want, you can always create a collection with dedicated provisioned throughput in a database with shared provisioned throughput, which might be an option for you in some cases.
 
 ## What's Next
-In [part 5](Part05-readme.md) I'll go through some basics about reading and writing data in a Cosmos DB database using the data model that I covered in [part 3](Part03-readme.md).
+In [part 5](Part05-readme.md) I'll go through some basics about reading and writing data in a Cosmos DB database using the data model that I covered in [part 3](Part03-readme.md). Also make sure to check out the [provisioning throughput](https://docs.microsoft.com/en-us/azure/cosmos-db/set-throughput) documentation for Cosmos DB.
 
 [Go to Part 5 ->](Part05-readme.md)
