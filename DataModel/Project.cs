@@ -8,16 +8,16 @@ namespace DataModel
     public class Project : DocumentBase
     {
 
-        private string _CompanyId;
+        private string _CompanyGlobalId;
         /// <summary>
-        /// The ID of the company the project is associated with.
+        /// The <see cref="Company.GlobalId"/> of the company that the project refers to.
         /// </summary>
-        public string CompanyId
+        public string CompanyGlobalId
         {
-            get => _CompanyId;
+            get => _CompanyGlobalId;
             set
             {
-                _CompanyId = value;
+                _CompanyGlobalId = value;
                 this.Partition = $"company:{value}";
             }
         }
@@ -29,13 +29,11 @@ namespace DataModel
         [JsonIgnore]
         public Company Company
         {
-            get { return _Company; }
+            get => _Company;
             set
             {
                 _Company = value;
-                this.CompanyId = null != this.Company
-                    ? $"{this.Company.Partition}|{this.Company.Id}"
-                    : null;
+                this.CompanyGlobalId = value?.GlobalId;
             }
         }
 

@@ -6,6 +6,14 @@ namespace DataModel
 {
     public class Company : DocumentBase
     {
+
+        public Company()
+        {
+            this.GlobalId = Guid.NewGuid().ToString();
+        }
+
+        public string GlobalId { get; set; }
+
         public string Name { get; set; }
 
         public string City { get; set; }
