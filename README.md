@@ -13,3 +13,12 @@ This tutorial is split up into the following parts. Each part focuses on a parti
 - [Part 3](Part03-readme.md): Designing a data model.
 - [Part 4](Part04-readme.md): Creating a Cosmos DB database.
 - [Part 5](Part05-readme.md): Reading and writing data using the data model.
+
+## Further Reading
+Below are some links that you might find useful when learning more about Cosmos DB.
+
+- [Introduction to Cosmos DB](https://docs.microsoft.com/en-us/azure/cosmos-db/introduction)
+- [Data modelling in Cosmos DB](https://docs.microsoft.com/en-us/azure/cosmos-db/modeling-data)
+- [Provision throughput in Cosmos DB](https://docs.microsoft.com/en-us/azure/cosmos-db/set-throughput#comparison-of-models)
+- [Query data with Cosmos DB SQL API](https://docs.microsoft.com/en-us/azure/cosmos-db/tutorial-query-sql-api)
+- [Cosmos DB Twitter account](https://twitter.com/AzureCosmosDB)
