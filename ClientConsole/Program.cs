@@ -2,7 +2,9 @@
 using Microsoft.Azure.Documents.Client;
 using Microsoft.Azure.Documents.Linq;
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace ClientConsole
@@ -29,13 +31,33 @@ namespace ClientConsole
 
         static async Task MainAsync(string[] args)
         {
-            await WriteCompaniesAsync();
-            await WriteProjectsAsync();
+            //await WriteCompaniesAsync();
+            //await WriteProjectsAsync();
+
+            var finnishCompanies = await ReadCompaniesByCountryAsync("Finland");
+            foreach(var company in finnishCompanies)
+            {
+                var docLink = UriFactory.CreateDocumentUri(DatabaseId, CollectionId, company.Id);
+                await Client.ReadDocumentAsync(docLink);
+
+                var projects = await ReadProjectsForCompanyAsync(company);
+            }
         }
 
-        /// <summary>
-        /// Writes a set of companies to the database.
-        /// </summary>
+        static async Task<IQueryable<Company>> ReadCompaniesByCountryAsync(string country)
+        {
+            var query = CreateDocumentQuery<Company>(x => x.Country == country);
+            var companies = await ExecuteDocumentQueryAsync(query);
+            return companies;
+        }
+
+        static async Task<IQueryable<Project>> ReadProjectsForCompanyAsync(Company company)
+        {
+            var query = CreateDocumentQuery<Project>(x => x.CompanyGlobalId == company.GlobalId);
+            var projects = await ExecuteDocumentQueryAsync(query);
+            return projects;
+        }
+
         static async Task WriteCompaniesAsync()
         {
             await WriteEntityAsync(new Company() { City = "Helsinki", Country = "Finland", Name = "Company #1", Id = "c1" });
@@ -105,5 +127,51 @@ namespace ClientConsole
 
             return new DocumentClient(new Uri($"{builder["AccountEndpoint"]}"), $"{builder["AccountKey"]}");
         }
+
+        /// <summary>
+        /// Creates a document query for the given document type and given predicate that spans across multiple partitions.
+        /// </summary>
+        /// <typeparam name="TDocument">The type of documents to query.</typeparam>
+        /// <param name="predicate">The predicate to use to match documents.</param>
+        static IDocumentQuery<TDocument> CreateDocumentQuery<TDocument>(Expression<Func<TDocument, bool>> predicate) where TDocument : DocumentBase
+        {
+            var doc = Activator.CreateInstance<TDocument>();
+
+            return Client
+                .CreateDocumentQuery<TDocument>(
+                    CollectionLink,
+                    new FeedOptions()
+                    {
+                        EnableCrossPartitionQuery = true
+                    }
+                )
+                .Where(x => x.DocumentType == doc.DocumentType)
+                .Where(predicate)
+                .AsDocumentQuery()
+                ;
+        }
+
+        /// <summary>
+        /// Executes the given document query and returns all results.
+        /// </summary>
+        /// <typeparam name="TDocument">The type of document.</typeparam>
+        /// <param name="query">The query to execute.</param>
+        /// <returns></returns>
+        static async Task<IQueryable<TDocument>> ExecuteDocumentQueryAsync<TDocument>(IDocumentQuery<TDocument> query) where TDocument : DocumentBase
+        {
+            var list = new List<TDocument>();
+            string continuation = null;
+
+            do
+            {
+                var result = await query.ExecuteNextAsync<TDocument>();
+                continuation = result.ResponseContinuation;
+                list.AddRange(result);
+            }
+            while (null != continuation);
+
+            return list.AsQueryable();
+        }
+
     }
 }
