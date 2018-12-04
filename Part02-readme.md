@@ -30,7 +30,7 @@ This means that with the minimum 400 RU/s, you can read 400 1 kB documents ever 
 ## Conclusion
 If you ask me, I would always go with multi-partition collections. It is true that you have to plan your data model a bit more, because you need to consider partitioning, but that is not a bad thing at all, in my opinion anyway.
 
-Since the RU/s is the only thing that costs money (OK, storage also costs something, but that cost is quite marginal, and if you go over 10 GB, you need to run in multi-partition collections anyway), and you can have the same throughput for both single-partition and multi-partition collections, I don't see any point in running single-partition collections, except for maybe some quick mockups etc.
+Since the RU/s is the only thing that costs money (OK, storage also costs something, but that cost is quite marginal), and the minimum throughput for both single-partition and multi-partition collections is the same, 400 RU/s, then I don't see any point in running single-partition collections, except for maybe some quick mockups etc.
 
 ## What's Next
 In [part 3](Part03-readme.md) I'll go over some basic principles on creating a data model for your application. Most of those principles have nothing to do with Cosmos DB, but are things that I've found very useful over the years when creating data models for different kinds of data storages.
