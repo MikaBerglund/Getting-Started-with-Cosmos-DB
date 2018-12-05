@@ -5,6 +5,8 @@ This repository is a tutorial for getting started with designing applications th
 
 If you are not familiar with Cosmos DB, you should first read this [overview](https://docs.microsoft.com/en-us/azure/cosmos-db/introduction).
 
+Please feel free to fork this repo and make it your own. If there's something you feel should be in the tutorial, you are welcome to send a pull request with your suggestions.
+
 ## Tutorial Structure
 This tutorial is split up into the following parts. Each part focuses on a particular subject.
 
