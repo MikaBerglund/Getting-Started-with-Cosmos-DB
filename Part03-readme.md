@@ -2,7 +2,7 @@
 
 [<- Part 2](Part02-readme.md) | [Part 4 ->](Part04-readme.md)
 
-Designing the data model for your application is perhaps the most time-consuming task you have to take care of before actually staring to build your application. Of course you don't have to complete the data model design, but there are certain things you must consider beforehand. This part focuses on those.
+Designing the data model for your application is perhaps the most time-consuming task you have to take care of before actually starting to build your application. Of course you don't have to complete the data model design, but there are certain things you must consider beforehand. This part focuses on those.
 
 > The data model created in this part is just to demonstrate various aspects of data model design and how you can use class libraries to encapsulate your data model in.
 
