@@ -33,6 +33,6 @@ If you ask me, I would always go with multi-partition collections. It is true th
 Since the RU/s is the only thing that costs money (OK, storage also costs something, but that cost is quite marginal), and the minimum throughput for both single-partition and multi-partition collections is the same, 400 RU/s, then I don't see any point in running single-partition collections, except for maybe some quick mockups etc.
 
 ## What's Next
-In [part 3](Part03-readme.md) I'll go over some basic principles on creating a data model for your application. Most of those principles have nothing to do with Cosmos DB, but are things that I've found very useful over the years when creating data models for different kinds of data storages.
+In [part 3](Part03-readme.md) I'll go over some basic principles for creating a data model for your application. Most of those principles have nothing to do with Cosmos DB, but are things that I've found very useful over the years when creating data models for different kinds of data storages.
 
 [Go to Part 3 ->](Part03-readme.md)
