@@ -2,6 +2,8 @@
 
 [<- Part 4](Part04-readme.md)
 
+> Note! This part is written for the v2 of the Cosmos DB SDK. There is now a newer, more simpler version of the SDK that you really should look into. I will update the documentation in this part to match [Cosmos DB SDK v3](https://github.com/Azure/azure-cosmos-dotnet-v3).
+
 The last part in this tutorial is just a brief overview of how you can use your data model you created in [Part 3](Part03-readme.md) to read and write data in your Cosmos DB database.
 
 I will not go into deep details on data access in this tutorial because there will be another tutorial about how query data in a Cosmos DB database using [Entity Framework Core](https://docs.microsoft.com/en-us/ef/core/), which I think has matured into a viable option for data access.
