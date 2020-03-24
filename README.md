@@ -24,3 +24,4 @@ Below are some links that you might find useful when learning more about Cosmos 
 - [Provision throughput in Cosmos DB](https://docs.microsoft.com/en-us/azure/cosmos-db/set-throughput#comparison-of-models)
 - [Query data with Cosmos DB SQL API](https://docs.microsoft.com/en-us/azure/cosmos-db/tutorial-query-sql-api)
 - [Cosmos DB Twitter account](https://twitter.com/AzureCosmosDB)
+- [.NET SDK for Azure Cosmos DB SQL API](https://github.com/Azure/azure-cosmos-dotnet-v3)
