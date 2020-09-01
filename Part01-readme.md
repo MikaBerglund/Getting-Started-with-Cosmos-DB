@@ -11,7 +11,7 @@ I primarily use [Visual Studio 2017](https://docs.microsoft.com/en-us/visualstud
 If you are running Windows (Server 2012 R2, Server 2016 or Windows 10), you can run Cosmos DB locally using the [Cosmos DB Emulator](https://docs.microsoft.com/en-us/azure/cosmos-db/local-emulator). With the emulator, you don't need to have an Azure subscription with Cosmos DB deployed. I always start my development with the local emulator.
 
 ## Azure Storage Explorer
-> Cosmos DB support in Azure Storage Explorer has been deprecated in the August 2020 release, v1.15.0. The same functionality can be found in several different tools, but I would prefer the Cosmos Explorer, which is described below.
+> Cosmos DB support in Azure Storage Explorer has been deprecated in the August 2020 release, v1.15.0. The same functionality can be found in several different tools, but I would prefer the Cosmos Explorer, which is [described below](#cosmos-explorer).
 
 ~~Although the Cosmos emulator comes with a browser based data explorer that you can use manage your Cosmos DB emulator and query data contained within it, you can also use [Azure Storage Explorer](https://azure.microsoft.com/en-us/features/storage-explorer/). It is capable of connecting to Cosmos DB collections running both in *Azure* as well as your local emulator. I find myself using the *Storage Explorer* especially when designing queries, because you can write your SQL-like queries and see what they return as well as the cost of the query in terms of `RU/s` (If you want to know more about *RU/s*, you can skip ahead to [*part 2: Scaling Considerations*](Part02-readme.md)). The Storage Explorer is available for Windows, macOS and Linux.~~
 
