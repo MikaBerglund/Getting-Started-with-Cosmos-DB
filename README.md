@@ -19,6 +19,8 @@ This tutorial is split up into the following parts. Each part focuses on a parti
 ## Further Reading
 Below are some links that you might find useful when learning more about Cosmos DB.
 
+- [Why I Love Cosmos DB](https://mikaberglund.com/why-i-love-cosmos-db/)
+- [Free Tier Now Available for Azure Cosmos DB](https://mikaberglund.com/free-tier-now-available-for-azure-cosmos-db/)
 - [Introduction to Cosmos DB](https://docs.microsoft.com/en-us/azure/cosmos-db/introduction)
 - [Data modelling in Cosmos DB](https://docs.microsoft.com/en-us/azure/cosmos-db/modeling-data)
 - [Provision throughput in Cosmos DB](https://docs.microsoft.com/en-us/azure/cosmos-db/set-throughput#comparison-of-models)
